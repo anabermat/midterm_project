@@ -36,14 +36,12 @@ public class AccountHolder extends User {
     public AccountHolder() {
     }
 
-    public AccountHolder(String name, Date dateOfBirth, Address primaryAddress, Address mailingAddress,
-                         List<Account> accountListPrimaryOwner, List<Account> accountListSecondaryOwner) {
-        super(name);
+    public AccountHolder(String username, String password, Date dateOfBirth, Address primaryAddress,
+                         Address mailingAddress) {
+        super(username, password);
         this.dateOfBirth = dateOfBirth;
         this.primaryAddress = primaryAddress;
         this.mailingAddress = mailingAddress;
-        this.accountListPrimaryOwner = accountListPrimaryOwner;
-        this.accountListSecondaryOwner = accountListSecondaryOwner;
     }
 
     public Date getDateOfBirth() {

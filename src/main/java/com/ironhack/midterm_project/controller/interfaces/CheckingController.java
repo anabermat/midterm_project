@@ -7,5 +7,4 @@ import java.text.ParseException;
 
 public interface CheckingController {
 
-
 }

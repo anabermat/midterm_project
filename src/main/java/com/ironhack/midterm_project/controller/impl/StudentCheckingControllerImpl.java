@@ -8,6 +8,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentCheckingControllerImpl implements StudentCheckingController {
 
-    @Autowired
-    private StudentCheckingRepository studentCheckingRepository;
 }

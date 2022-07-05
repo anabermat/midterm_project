@@ -11,8 +11,10 @@ import com.ironhack.midterm_project.repository.AdminRepository;
 import com.ironhack.midterm_project.service.interfaces.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.Optional;
 
@@ -28,20 +30,20 @@ public class AdminControllerImpl implements AdminController {
 
     @GetMapping("/AdminAccounts/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Account findAccountById(@PathVariable Long id) {
+    public Account findAccountById(@PathVariable @Valid Long id) {
         return adminService.findAccountById(id);
     }
 
     @GetMapping("/AdminAccounts/{id}/balance")
     @ResponseStatus(HttpStatus.OK)
-    public Money findBalanceByAccountId(@PathVariable Long id) {
+    public Money findBalanceByAccountId(@PathVariable @Valid Long id) {
         Account account = adminService.findAccountById(id);
         return account.getBalance();
     }
 
     @PatchMapping("/AdminAccounts/{id}/balance")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBalance(@PathVariable Long id, @RequestBody AccountBalanceDTO accountBalanceDTO) {
+    public void updateBalance(@PathVariable @Valid Long id, @RequestBody AccountBalanceDTO accountBalanceDTO) {
         adminService.updateBalance(id, accountBalanceDTO.getBalance());
     }
 
@@ -65,7 +67,7 @@ public class AdminControllerImpl implements AdminController {
 
     @DeleteMapping("/AdminAccounts/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable @Valid Long id) {
         adminService.delete(id);
     }
 
